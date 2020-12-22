@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DB에 보낼 sql -->
+<!-- mapper파일이 있는 위치 경로 -->
+<mapper namespace="com.project.spring.mapper.SpringBootMapper">
+    <select id="getAll" resultType="com.project.spring.dto.SpringBoot">
+        SELECT * FROM springboot
+    </select>
+    
+    <!-- user table select - user detail-->
+    <select id="readUser" parameterType="String" resultType="com.project.spring.dto.Member">
+        SELECT * FROM user WHERE username = #{username}
+    </select>
+    
+    <!-- authority table -->
+    <select id="readAuthority" parameterType="String" resultType="String">
+        SELECT authority_name FROM authority WHERE username = #{username}
+    </select>
+    
+    <!-- user table insert  -->
+    <insert id="insertUser">
+    	INSERT INTO user(username,password,name)
+    	VALUES (
+    	#{username},
+    	#{password},
+    	#{name})
+    </insert>
+    
+    <!-- Authority table insert  -->
+    <insert id="insertAuthority" parameterType="com.project.spring.dto.Authority" >
+    	INSERT INTO authority
+    	VALUES (#{username},#{authority_name})
+    </insert>
+    
+    
+    
+</mapper>
