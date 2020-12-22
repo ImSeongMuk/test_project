@@ -25,7 +25,7 @@ public class BoardController {
 	//기본 페이지 게시판 리스트를 불러온다.
 	@GetMapping("/")
 	public ModelAndView list() throws Exception{
-		
+		System.out.println("test");
 		ModelAndView boardModel= new ModelAndView("list");
 		List<BoardDto> boardList = boardService.getBoardlist(0);
 		
